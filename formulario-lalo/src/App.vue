@@ -4,7 +4,6 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <div class="container">
-    <h1> Formulario </h1>
     <RouterView />
   </div>
 </template>

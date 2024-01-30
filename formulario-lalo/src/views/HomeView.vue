@@ -66,6 +66,7 @@
 </script>
 
 <template>
+  <h1> Formulario - Lalo </h1>
   <div class="restricciones">
     <p> Restricciones: </p>
     <ul>
@@ -105,5 +106,29 @@
 </template>
 
 <style scoped>
-
+  .restricciones {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .formulario {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .formulario input {
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
 </style>
