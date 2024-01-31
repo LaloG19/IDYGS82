@@ -1,3 +1,11 @@
+  <!--     <label for="Nombre"> Nombre: </label>
+      <input type="text" id="Nombre" placeholder="Nombre" v-model="name">
+      <label for="Apellido"> Apellido: </label>
+      <input type="text" id="Apellido" placeholder="Apellido" v-model="surname">
+      <label for="Edad"> Edad: </label>
+      <input type="number" id="Edad" placeholder="Edad" min="0" max="60" v-model="age">
+      <label for="Genero"> Genero: </label> -->
+
 <script setup lang="ts">
   import { ref, onMounted, watch } from 'vue';
   import type { Ref } from 'vue';
@@ -66,69 +74,118 @@
 </script>
 
 <template>
-  <h1> Formulario - Lalo </h1>
-  <div class="restricciones">
-    <p> Restricciones: </p>
-    <ul>
-      <li>
-        El nombre debe tener entre 5 y 18 caracteres.
-      </li>
-      <li>
-        El apellido no puede estar vacio, ni ser igual al nombre.
-      </li>
-      <li>
-        La edad debe estar entre 0 y 60 años.
-      </li>
-      <li>
-        El genero debe ser Masculino, Femenino u Otro.
-      </li>
-    </ul>
+  <div class="contenedorPadre">
+
+    <h1> Formulario - Lalo </h1>
+
+    <div class="restricciones">
+      <p> Restricciones: </p>
+      <ul>
+        <li>
+          El nombre debe tener entre 5 y 18 caracteres.
+        </li>
+        <li>
+          El apellido no puede estar vacio, ni ser igual al nombre.
+        </li>
+        <li>
+          La edad debe estar entre 0 y 60 años.
+        </li>
+        <li>
+          El genero debe ser Masculino, Femenino u Otro.
+        </li>
+      </ul>
+    </div>
+
+    <fieldset class="formulario">
+
+      <div class="textInputWrapper">
+        <input placeholder="Nombre" type="text" class="textInput">
+      </div>
+      <div class="textInputWrapper">
+        <input placeholder="Apellidos" type="text" class="textInput">
+      </div>
+      <div class="textInputWrapper">
+        <input placeholder="Edad" type="number" class="textInput">
+      </div>
+      <select name="Genero" id="Genero" v-if="generoMode" v-model="Genero" class="selectGender">
+        <option v-for="(items, index) in Generos" :key="index" > {{  items }}</option>
+      </select>
+
+      <div class="textInputWrapper">
+        <input type="text" id="Genero" v-if="!generoMode" v-model="Genero" placeholder="Genero" class="textInput">
+      </div>
+
+      <button class="btn cube cube-hover minibutton" type="button" @click="generoChange" v-if="!generoMode"> <!-- BTVolver -->
+        <div class="bg-top">
+          <div class="bg-inner"></div>
+        </div>
+        <div class="bg-right">
+          <div class="bg-inner"></div>
+        </div>
+        <div class="bg">
+          <div class="bg-inner"></div>
+        </div>
+        <div class="text">Volver</div>
+      </button>
+
+      <button class="btn cube cube-hover" type="button" @click="Envio">     <!-- BTEnviar -->
+        <div class="bg-top">
+          <div class="bg-inner"></div>
+        </div>
+        <div class="bg-right">
+          <div class="bg-inner"></div>
+        </div>
+        <div class="bg">
+          <div class="bg-inner"></div>
+        </div>
+        <div class="text"> Envíar </div>
+      </button>
+
+    </fieldset>
+
   </div>
-  <fieldset class="formulario">
-    <label for="Nombre"> Nombre: </label>
-    <input type="text" id="Nombre" placeholder="Nombre" v-model="name">
-    <label for="Apellido"> Apellido: </label>
-    <input type="text" id="Apellido" placeholder="Apellido" v-model="surname">
-    <label for="Edad"> Edad: </label>
-    <input type="number" id="Edad" placeholder="Edad" min="0" max="60" v-model="age">
-    <label for="Genero"> Genero: </label>
-
-    <select name="Genero" id="Genero" v-if="generoMode" v-model="Genero">
-      <option v-for="(items, index) in Generos" :key="index" > {{  items }}</option>
-    </select>
-
-    <input type="text" id="Genero" v-else="!generoMode" v-model="Genero">
-    <button @click="generoChange" v-if="!generoMode"> Cancelar </button>
-
-    <button @click="Envio"> Enviar </button>
-  </fieldset>
-
 </template>
 
 <style scoped>
-  .restricciones {
-    width: 50%;
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .formulario {
-    width: 50%;
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .formulario input {
-    width: 100%;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid black;
-  }
+@import '../assets/boton.css';
+
+h1{
+  text-align: center;
+  width: 100%;
+  display: inline;
+}
+.restricciones {
+  text-align: start;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.formulario {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.minibutton{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.selectGender{
+  width: 100%;
+  color: rgba(255, 255, 255, 0.582);
+  background-color: rgba(255, 255, 255, 0.082);
+  height: 36px;
+  border: none;
+  border-radius: 5px 5px 0px 0px;
+  margin-top: 0.75rem;
+}
+option{
+  color: rgba(255, 255, 255, 0.582);
+  background-color: rgba(255, 255, 255, 0.082);
+  height: 36px;
+}
 </style>
