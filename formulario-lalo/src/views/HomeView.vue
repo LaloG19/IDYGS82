@@ -166,6 +166,9 @@ h1{
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(115, 235, 189, 0.068);
 }
 .formulario {
   width: 100%;
@@ -175,6 +178,8 @@ h1{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(115, 235, 189, 0.24);
 }
 .minibutton{
   margin-top: 1rem;
